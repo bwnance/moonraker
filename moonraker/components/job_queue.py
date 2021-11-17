@@ -28,7 +28,7 @@ class JobQueue:
     def __init__(self, config: ConfigHelper) -> None:
         self.server = config.get_server()
         self.queued_jobs: Dict[str, QueuedJob] = {}
-        self.queue_state: str = "ready"
+        self.queue_state: str = "paused"
         self.lock = asyncio.Lock()
         self.load_on_start = config.getboolean("load_on_startup", False)
         self.job_delay = config.getfloat("job_transition_delay", 0.01)
